@@ -1,0 +1,13 @@
+.jumbotron{
+    background-color: white;
+    color:#1ab2ff;
+}
+
+.jumbotron:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* Centers the border. */
+    width: 90%; /* Any width is ok */
+    padding-top: 20px; /* Creates some space between the element and the border. */
+    border-bottom: 2px solid#1ab2ff; /* This creates the border. Replace black with whatever color you want. */
+}
