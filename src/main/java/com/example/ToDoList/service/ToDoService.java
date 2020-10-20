@@ -29,4 +29,8 @@ public class ToDoService {
     {
         return this.toDoRepository.selectAllItems();
     }
+
+    public int updateToDo(UUID uuid, int isChecked) {
+        return this.toDoRepository.updateToDo(uuid, isChecked);
+    }
 }

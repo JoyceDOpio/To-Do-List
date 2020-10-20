@@ -15,4 +15,6 @@ public interface ToDoRepository {
     List<ToDoItem> selectAllItems();
 
     int deleteToDo(UUID uuid);
+
+    int updateToDo(UUID uuid, int isChecked);
 }

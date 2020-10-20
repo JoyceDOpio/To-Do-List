@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
 import { HeaderComponent } from './header/header.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

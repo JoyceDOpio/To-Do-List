@@ -39,12 +39,6 @@ export class TodoComponent implements OnInit {
       console.log(data);
       this.todoItems.push(toDo);
     });
-
-    // this.toDoService.selectAll().subscribe(data => {
-    //         this.todoItems = data;
-    //         for(let u of this.todoItems)
-    //         console.log(u);
-    //       });
     }
   }
 
@@ -57,16 +51,15 @@ export class TodoComponent implements OnInit {
         this.todoItems.splice(idx,1);
       }
     });
-
-    // this.toDoService.selectAll().subscribe(data => {
-    //   this.todoItems = data;
-    //   for(let u of this.todoItems)
-    //   console.log(u);
-    // });  
   }
 
   toggleCheck(toDoItem:ToDo){
     toDoItem.isChecked = !toDoItem.isChecked;
+
+    // Send information to server
+    this.toDoService.updateToDo(toDoItem).subscribe(response => {
+      console.log(response);
+    })
   }
 
 }

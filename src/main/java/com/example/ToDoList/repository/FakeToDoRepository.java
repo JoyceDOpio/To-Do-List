@@ -43,4 +43,9 @@ public class FakeToDoRepository implements ToDoRepository {
         toDoItems.remove(matchingToDo.orElse(null));
         return 1;
     }
+
+    @Override
+    public int updateToDo(UUID uuid, int isChecked) {
+        return 0;
+    }
 }

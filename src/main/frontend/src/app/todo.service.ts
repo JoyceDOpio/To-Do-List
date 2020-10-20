@@ -53,4 +53,16 @@ export class TodoService {
   selectAll(): Observable<ToDo[]>{
     return this.httpClient.get<ToDo[]>(this.url);
   }
+
+  updateToDo(toDo:ToDo){
+    let isChecked = 0;
+    if(toDo.isChecked === true){
+      isChecked = 1;
+    }
+    return this.httpClient.put(this.url+toDo.id+"/"+isChecked,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json', 'Access-Control-Allow-Origin':'*',
+      })});
+  }
 }

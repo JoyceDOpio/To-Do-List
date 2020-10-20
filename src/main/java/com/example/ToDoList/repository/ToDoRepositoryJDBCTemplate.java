@@ -20,21 +20,21 @@ public class ToDoRepositoryJDBCTemplate implements ToDoRepository {
     public ToDoRepositoryJDBCTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
 
-        query = "CREATE DATABASE IF NOT EXISTS toDo_db;";
-        jdbcTemplate.execute(query);
-
-        query = "USE toDo_db;";
-        jdbcTemplate.execute(query);
-
-        query = "DROP TABLE tasks;";
-        jdbcTemplate.execute(query);
-
-        query = "CREATE TABLE IF NOT EXISTS tasks(id CHAR(36) PRIMARY KEY, task_name VARCHAR(100), is_checked BOOLEAN);";
-        jdbcTemplate.execute(query);
-
-        insertToDo(new ToDoItem(UUID.fromString("0d85cacb-b417-4c08-a1e2-c19cedd26d5e"),"go to sleep"));
-        insertToDo(new ToDoItem(UUID.fromString("110b68d9-160b-4603-9059-6a2081f616be"),"go to sleep again"));
-        insertToDo(new ToDoItem(UUID.fromString("b1cab30d-f0e4-4fa7-b49a-91e8d25d9e38"),"and again"));
+//        query = "CREATE DATABASE IF NOT EXISTS toDo_db;";
+//        jdbcTemplate.execute(query);
+//
+//        query = "USE toDo_db;";
+//        jdbcTemplate.execute(query);
+//
+//        query = "DROP TABLE tasks;";
+//        jdbcTemplate.execute(query);
+//
+//        query = "CREATE TABLE IF NOT EXISTS tasks(id CHAR(36) PRIMARY KEY, task_name VARCHAR(100), is_checked BOOLEAN);";
+//        jdbcTemplate.execute(query);
+//
+//        insertToDo(new ToDoItem(UUID.fromString("0d85cacb-b417-4c08-a1e2-c19cedd26d5e"),"go to sleep"));
+//        insertToDo(new ToDoItem(UUID.fromString("110b68d9-160b-4603-9059-6a2081f616be"),"go to sleep again"));
+//        insertToDo(new ToDoItem(UUID.fromString("b1cab30d-f0e4-4fa7-b49a-91e8d25d9e38"),"and again"));
     }
 
     @Override
@@ -59,5 +59,10 @@ public class ToDoRepositoryJDBCTemplate implements ToDoRepository {
 
         String query="DELETE FROM tasks WHERE id='" + uuid +"';";
         return jdbcTemplate.update(query);
+    }
+
+    @Override
+    public int updateToDo(UUID uuid, int isChecked) {
+        return jdbcTemplate.update("UPDATE tasks SET is_checked=" + isChecked + " WHERE id='" + uuid + "';");
     }
 }

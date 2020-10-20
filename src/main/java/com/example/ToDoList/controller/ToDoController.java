@@ -27,7 +27,7 @@ public class ToDoController {
         return toDoService.insertToDo(toDoItem);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public int deleteItem(@PathVariable("id") UUID uuid){return toDoService.deleteItem(uuid);}
 
     @GetMapping
@@ -35,5 +35,10 @@ public class ToDoController {
     public List<ToDoItem> selectAllItems()
     {
         return toDoService.selectAllItems();
+    }
+
+    @PutMapping("{id}/{is_checked}")
+    public int updateToDo(@PathVariable("id") UUID uuid,@PathVariable("is_checked") int isChecked) {
+        return toDoService.updateToDo(uuid, isChecked);
     }
 }
