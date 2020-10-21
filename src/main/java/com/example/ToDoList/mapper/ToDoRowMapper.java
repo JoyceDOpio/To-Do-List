@@ -15,6 +15,7 @@ public class ToDoRowMapper implements RowMapper<ToDoItem> {
         toDoItem.setId((UUID.fromString(resultSet.getString("id"))));
         toDoItem.setTask((resultSet.getString("task_name")));
         toDoItem.setChecked((resultSet.getInt("is_checked")));
+        toDoItem.setListId((UUID.fromString(resultSet.getString("list_id"))));
 
         return toDoItem;
     }

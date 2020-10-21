@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/todolist/")
+@RequestMapping("/api/todolist/list/")
 @RestController
 public class ToDoController {
 
@@ -30,11 +30,11 @@ public class ToDoController {
     @DeleteMapping("{id}")
     public int deleteItem(@PathVariable("id") UUID uuid){return toDoService.deleteItem(uuid);}
 
-    @GetMapping
+    @GetMapping("{listId}")
     @ResponseBody
-    public List<ToDoItem> selectAllItems()
+    public List<ToDoItem> findAll(@PathVariable("listId") UUID listId)
     {
-        return toDoService.selectAllItems();
+        return toDoService.findAll(listId);
     }
 
     @PutMapping("{id}/{is_checked}")

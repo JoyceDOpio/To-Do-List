@@ -1,43 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
-import {ToDo} from '../todo';
+import { ToDo } from '../todo';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
-export class TodoComponent implements OnInit {
+export class ListComponent implements OnInit {
 
+  @Input() id;
   todoItems:ToDo[];
 
   constructor(private toDoService:TodoService) { }
 
   ngOnInit(): void {
-    this.toDoService.selectAll().subscribe(data => {
-            this.todoItems = data;
-            for(let u of this.todoItems)
-            console.log(u);
-          });
+    this.toDoService.findAll(this.id).subscribe(data => {
+      this.todoItems = data;
+      for(let u of this.todoItems)
+      console.log(u);
+    });
+    console.log("list id:"+this.id);
   }
 
   onAdd(item){
     if(item.value !== "")
     {
-      let id = uuidv4();
+      let todoId = uuidv4();
       var toDo = {} as ToDo;
-      toDo.id = id;
+      toDo.id = todoId;
       toDo.task = item.value;
-    // toDo.isChecked = false;
-    // this.todoItems.push(toDo);
+      toDo.listId = this.id;
+
       item.value = null;
 
-
-    this.toDoService.addToDo(toDo).subscribe((data: ToDo) =>
+    this.toDoService.addToDo(toDo).subscribe(response =>
     {
-      console.log(data);
-      this.todoItems.push(toDo);
+      console.log(response);
+      if(response === 1){
+        this.todoItems.push(toDo);
+      }
     });
     }
   }
@@ -59,7 +62,6 @@ export class TodoComponent implements OnInit {
     // Send information to server
     this.toDoService.updateToDo(toDoItem).subscribe(response => {
       console.log(response);
-    })
+    });
   }
-
 }

@@ -14,14 +14,17 @@ public class ToDoItem {
     @NotBlank
     // 1 - true; 0 - false
     private int isChecked;
+    @NotBlank
+    private UUID listId;
 
     public ToDoItem() {
     }
 
-    public ToDoItem(UUID id, String task) {
+    public ToDoItem(UUID id, String task, UUID listId) {
         this.id = id;
         this.task = task;
         this.isChecked = 0;
+        this.listId = listId;
     }
 
     @JsonProperty("task")
@@ -36,6 +39,10 @@ public class ToDoItem {
     public int isChecked() {
         return isChecked;
     }
+    @JsonProperty("listId")
+    public UUID getListId() {
+        return listId;
+    }
 
     public void setId(UUID id) {
         this.id = id;
@@ -47,6 +54,10 @@ public class ToDoItem {
 
     public void setChecked(int checked) {
         isChecked = checked;
+    }
+
+    public void setListId(UUID listId) {
+        this.listId = listId;
     }
 
     public String toString(){

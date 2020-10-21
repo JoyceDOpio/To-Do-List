@@ -25,9 +25,9 @@ public class ToDoService {
 
     public int deleteItem(UUID uuid){return this.toDoRepository.deleteToDo(uuid);}
 
-    public List<ToDoItem> selectAllItems()
+    public List<ToDoItem> findAll(UUID listId)
     {
-        return this.toDoRepository.selectAllItems();
+        return this.toDoRepository.findAll(listId);
     }
 
     public int updateToDo(UUID uuid, int isChecked) {

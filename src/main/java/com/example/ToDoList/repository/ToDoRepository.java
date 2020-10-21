@@ -12,7 +12,7 @@ public interface ToDoRepository {
 
     int insertToDo(ToDoItem toDoItem);
 
-    List<ToDoItem> selectAllItems();
+    List<ToDoItem> findAll(UUID listId);
 
     int deleteToDo(UUID uuid);
 
