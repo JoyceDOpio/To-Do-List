@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface ToDoRepository {
 
-    int insertToDo(ToDoItem toDoItem);
+    ToDoItem insertToDo(ToDoItem toDoItem);
 
     List<ToDoItem> findAll(UUID listId);
 

@@ -1,52 +1,9 @@
-/*Google fonts*/
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
-.input-group {
-    padding-bottom: 15px;
-}
-
-.input-group-addon{
-    color: #1ab2ff;
-    cursor: pointer;
-    position: absolute;
-    /* top: 0; */
-    bottom: 10px;
-    right: -10px;    
-}
-
-.fas .fa-plus-circle .fa-2x{
-    position: absolute;
-}
-
-
-data{
-	max-width: 30em;
-	margin: 4em auto;
-	position: relative;
-    background: #f4f4f4;
-    padding: 2em 3em;
-    overflow: hidden;
-}
 
 .data li{
     background: #fff;
-    border-left: 4px solid#1ab2ff;
+    border-left: 2px solid#1ab2ff;
     padding: 10px;
     margin: 5px 5px;
     color: #666;
     font-family: "Raleway";
-}
-
-.data li i{
-    color: #888;
-    cursor: pointer;
-}
-
-.text-danger{
-    float: right;
-}
-
-.iconify{
-    color: olivedrab;
-    font-size: 25px;
 }

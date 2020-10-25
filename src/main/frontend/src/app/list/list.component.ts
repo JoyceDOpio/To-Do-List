@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { ToDo } from '../todo';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-list',
@@ -27,9 +26,7 @@ export class ListComponent implements OnInit {
   onAdd(item){
     if(item.value !== "")
     {
-      let todoId = uuidv4();
       var toDo = {} as ToDo;
-      toDo.id = todoId;
       toDo.task = item.value;
       toDo.listId = this.id;
 
@@ -38,9 +35,7 @@ export class ListComponent implements OnInit {
     this.toDoService.addToDo(toDo).subscribe(response =>
     {
       console.log(response);
-      if(response === 1){
-        this.todoItems.push(toDo);
-      }
+      this.todoItems.push(response);
     });
     }
   }

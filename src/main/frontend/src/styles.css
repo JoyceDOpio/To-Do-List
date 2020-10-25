@@ -1,4 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+/*Google fonts*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.input-group {
+    padding-bottom: 15px;
+}
+
 .hover-cursor{
     cursor: pointer;
+}
+
+.btn{
+    border-color:  #1ab2ff;
+    border-width: 1px;
+    color: #1ab2ff;
+    cursor: pointer;
+    /* font-weight: bold; */
+}
+
+.btn:hover{
+    background-color:#1ab2ff;
+    color: white;
+}
+
+data{
+	max-width: 30em;
+	margin: 4em auto;
+	position: relative;
+    background: #f4f4f4;
+    padding: 2em 3em;
+    overflow: hidden;
+}
+
+.data li i{
+    color: #888;
+    cursor: pointer;
+}
+
+.text-danger{
+    float: right;
 }

@@ -3,10 +3,8 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="input-group">
-                <input #itemTitle type="text" class="form-control" placeholder="Add To Do List">    
-                <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
-                    <i class="fas fa-plus-circle fa-3x"></i>
-                </div>
+                <input #itemTitle type="text" class="form-control" placeholder="Add To Do List">  
+                <button type="button" class="btn btn-outline-primary" (click)="onAdd(itemTitle)">Add</button>  
             </div>
             
             <div class="data">
@@ -25,7 +23,6 @@
         </div>
         <div class="col-md-6">
             <ng-template appList></ng-template>
-            <!-- <app-list [id]="listId"></app-list> -->
         </div>
     </div>
 </div>

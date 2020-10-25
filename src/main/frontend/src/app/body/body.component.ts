@@ -28,21 +28,19 @@ export class BodyComponent implements OnInit {
 
   createListComponent(listItem:List){
 
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ListComponent);
+    var componentFactory = this.componentFactoryResolver.resolveComponentFactory(ListComponent);
 
-    const viewContainerRef = this.listDirective.viewContainerRef;
+    var viewContainerRef = this.listDirective.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<ListComponent>(componentFactory);
+    var componentRef = viewContainerRef.createComponent<ListComponent>(componentFactory);
     componentRef.instance.id = listItem.id;
   }
 
   onAdd(item){
     if(item.value !== "")
     {
-      let id = uuidv4();
       var toDoList = {} as List;
-      toDoList.id = id;
       toDoList.title = item.value;
 
       item.value = null;
@@ -50,20 +48,19 @@ export class BodyComponent implements OnInit {
       this.listService.addList(toDoList).subscribe(response =>
         {
           console.log(response);
-          if(response === 1){
-            this.lists.push(toDoList);
-          }
+          this.lists.push(response);
         });
       }
   }
 
   onDelete(id:number,idx:number){
-    
+
     this.listService.deleteList(id)
     .subscribe(response => {
       console.log(response);
       if (response === 1){
         this.lists.splice(idx,1);
+        this.listDirective.viewContainerRef.clear();
       }
     });
   }

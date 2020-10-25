@@ -22,10 +22,12 @@ public class ToDoListRepositoryJDBCTemplate implements ToDoListRepository{
     }
 
     @Override
-    public int insertToDoList(ToDoList ToDoList) {
-        String id = ToDoList.getId().toString();
-        query = "INSERT INTO lists VALUES('" + id + "','" + ToDoList.getTitle() + "');";
-        return jdbcTemplate.update(query);
+    public ToDoList insertToDoList(ToDoList toDoList) {
+
+        toDoList.setId(UUID.randomUUID());
+        query = "INSERT INTO lists VALUES('" + toDoList.getId().toString() + "','" + toDoList.getTitle() + "');";
+        jdbcTemplate.update(query);
+        return toDoList;
     }
 
     @Override
@@ -38,7 +40,10 @@ public class ToDoListRepositoryJDBCTemplate implements ToDoListRepository{
 
     @Override
     public int deleteToDoList(UUID uuid) {
-        String query="DELETE FROM lists WHERE id='" + uuid +"';";
+        query = "DELETE FROM tasks WHERE list_id='" + uuid + "';";
+        jdbcTemplate.update(query);
+
+        query = "DELETE FROM lists WHERE id='" + uuid +"';";
         return jdbcTemplate.update(query);
     }
 }

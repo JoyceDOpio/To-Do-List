@@ -19,7 +19,7 @@ public class ToDoService {
         this.toDoRepository = toDoRepository;
     }
 
-    public int insertToDo(ToDoItem toDoItem){
+    public ToDoItem insertToDo(ToDoItem toDoItem){
         return this.toDoRepository.insertToDo(toDoItem);
     }
 

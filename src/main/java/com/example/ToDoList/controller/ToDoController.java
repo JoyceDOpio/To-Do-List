@@ -23,7 +23,7 @@ public class ToDoController {
     }
 
     @PostMapping
-    public int addToDoItem(@RequestBody ToDoItem toDoItem){
+    public ToDoItem addToDoItem(@RequestBody ToDoItem toDoItem){
         return toDoService.insertToDo(toDoItem);
     }
 

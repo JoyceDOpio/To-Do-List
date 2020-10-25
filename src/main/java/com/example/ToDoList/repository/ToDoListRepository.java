@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface ToDoListRepository {
 
-    int insertToDoList(ToDoList ToDoList);
+    ToDoList insertToDoList(ToDoList ToDoList);
 
     List<ToDoList> selectAll();
 

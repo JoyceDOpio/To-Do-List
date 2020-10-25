@@ -22,12 +22,14 @@ public class ToDoRepositoryJDBCTemplate implements ToDoRepository {
     }
 
     @Override
-    public int insertToDo(ToDoItem toDoItem) {
+    public ToDoItem insertToDo(ToDoItem toDoItem) {
 
-        String id = toDoItem.getId().toString();
-        String listId = toDoItem.getListId().toString();
-        query = "INSERT INTO tasks VALUES('" + id + "','" + toDoItem.getTask() + "'," + toDoItem.isChecked() + ",'" + listId + "');";
-        return jdbcTemplate.update(query);
+        toDoItem.setId(UUID.randomUUID());
+        query = "INSERT INTO tasks VALUES('" + toDoItem.getId().toString() +
+                "','" + toDoItem.getTask() + "'," + toDoItem.isChecked() +
+                ",'" + toDoItem.getListId().toString() + "');";
+        jdbcTemplate.update(query);
+        return toDoItem;
     }
 
     @Override
@@ -35,7 +37,6 @@ public class ToDoRepositoryJDBCTemplate implements ToDoRepository {
 
         query = "SELECT * FROM tasks WHERE list_id='" + listId + "';";
         List<ToDoItem> list = jdbcTemplate.query(query, new ToDoRowMapper());
-        list.forEach(System.out::println);
         return list;
     }
 

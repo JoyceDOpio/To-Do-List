@@ -23,7 +23,7 @@ public class ToDoListController {
     }
 
     @PostMapping
-    public int addToDoList(@RequestBody ToDoList toDoList){
+    public ToDoList addToDoList(@RequestBody ToDoList toDoList){
         return toDoListService.insertToDoList(toDoList);
     }
 
